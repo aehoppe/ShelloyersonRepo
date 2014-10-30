@@ -1,5 +1,3 @@
- package shelloyerson;
-
 import java.util.Scanner;
 
 public class ShelloyersonGame {
@@ -22,15 +20,15 @@ public class ShelloyersonGame {
                 case "quit":
                     end = true;
                     break;
-                case "new":
-                    Shelloyerson s2 = newShelloyerson(count);
-                    break;
-                case "view":
-                    view();
-                    break;
-                case "breed":
-                    breed();
-                    break;
+//                case "new":
+//                    Shelloyerson s2 = newShelloyerson(count);
+//                    break;
+//                case "view":
+//                    view();
+//                    break;
+//                case "breed":
+//                    breed();
+//                    break;
                 default:
                     break;
                 }

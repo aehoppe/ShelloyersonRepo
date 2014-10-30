@@ -1,5 +1,3 @@
-package shelloyerson;
-
 public class Shelloyerson {
     // characteristics
     private boolean isMale;
