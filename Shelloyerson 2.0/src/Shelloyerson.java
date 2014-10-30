@@ -13,6 +13,7 @@ public class Shelloyerson {
         }
         else {
             isMale = false;
+            gender = "female";
         }
         strength = (int) (Math.random() * 10) + 1;
         speed = (int) (Math.random() * 10) + 1;
@@ -20,10 +21,23 @@ public class Shelloyerson {
         dance = (int) (Math.random() * 10) + 1;
         sing = (int) (Math.random() * 10) + 1;
         smarts = (int) (Math.random() * 10) + 1;
-        shelloyersonCount++;
     }
     public Shelloyerson(String newName){
         name = newName;
+        if (Math.random() < 0.5){
+            isMale = true;
+            gender = "male";
+        }
+        else {
+            isMale = false;
+            gender = "female";
+        }
+        strength = (int) (Math.random() * 10) + 1;
+        speed = (int) (Math.random() * 10) + 1;
+        looks = (int) (Math.random() * 10) + 1;
+        dance = (int) (Math.random() * 10) + 1;
+        sing = (int) (Math.random() * 10) + 1;
+        smarts = (int) (Math.random() * 10) + 1;
     }
     
     //accessors
