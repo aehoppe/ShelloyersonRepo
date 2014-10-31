@@ -12,12 +12,21 @@ public class ShelloyersonGame {
     	intro();
     	
         Scanner console = new Scanner(System.in);
-        
+        /*
+         * while the user hasn't entered the exit code, continue the game
+         */
         boolean end = false;
         while (!end){
+        	// get more user input each time around the loop
             String input = console.nextLine();
             input = input.toLowerCase();
             Scanner s = new Scanner(input);
+            /*
+             * while there is new user input to use, compare it to the following options in
+             * the switch block.
+             * type "quit" to exit the block and the program.
+             * eventually need to implement code to prevent new shell creation before login, for example.
+             */
             while (s.hasNext()){
                 String next = s.next();
                 switch(next){
@@ -46,6 +55,9 @@ public class ShelloyersonGame {
                 case "aight":
                 	System.out.println("skeet skeet");
                 	System.out.print(">> ");
+                	break;
+                case "summary":
+                	System.out.println(currentUser.toString());
                 	break;
                 default:
                 	System.out.println("Please type a valid command");
@@ -87,13 +99,13 @@ public class ShelloyersonGame {
     	System.out.println("Ah, I bet you'd like to log in, wouldn't you?");
 		System.out.println("I suppose I'll let you... with the right username, of course: ");
 		System.out.print(">>");
+		// gets user input for their username, and creates a new "account"
     	ShellUser user1 = null;
     	String input = s.next();
     	input = input.toLowerCase();
     	user1 = new ShellUser(input);
-    	System.out.println("Thanks, you've logged in " + user1 + ".");
+    	System.out.println("Thanks, you've logged in " + user1.getUsername() + ".");
     	System.out.println("You may now mess with your shelloyersons.");
-    	System.out.print(">> ");
         return user1;
     }
     
@@ -107,9 +119,14 @@ public class ShelloyersonGame {
     public static void newShell(ShellUser username){
         System.out.println("Oh, so you want a new shelloyerson, huh?");
         System.out.print("Please enter your new Shelloyerson's name: ");
+        // get user input for the new shell's name
         Scanner namer = new Scanner(System.in);
         String name = namer.next();
         Shelloyerson shell = new Shelloyerson(name);
+        /*
+         * a loop that determines if there are any empty slots in the user's array of shelloyersons
+         * and stops at the first open slot, putting the new shell there.
+         */
         boolean stillNeedsSlot = true;
         for(int i = 0; stillNeedsSlot == true && i < username.getUShells().length; i++){
         	int slotNum = i + 1;
@@ -126,14 +143,17 @@ public class ShelloyersonGame {
     
     /**
      * this method prints out a shell of the current user's choice, asks for input on which 
-     * slot to display
+     * slot to display. Desperately needs input validation to avoid nullpointerexceptions
      * 
      * @param currentUser determines which user's shell to display. will be more useful later.
      */
     public static void viewShell(ShellUser currentUser){
     	System.out.println("You want to have your shelloyerson and see it too?\nOh alright...");
+    	System.out.print("What shell slot would you like to open for viewing? ");
+    	// gets user input to open a slot, numbered 1 - 5. 
+    	// desperately needs input validation to make sure there is something in the slot
     	Scanner number = new Scanner(System.in);
-    	int num = number.nextInt();
+    	int num = number.nextInt() - 1;
     	System.out.println(currentUser.getShell(num).toString());
     }
 }
