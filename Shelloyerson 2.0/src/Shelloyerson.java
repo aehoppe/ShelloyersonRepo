@@ -40,7 +40,7 @@ public class Shelloyerson {
         smarts = (int) (Math.random() * 10) + 1;
     }
     
-    //accessors
+    // accessors
     public boolean isMale() {
         return isMale;
     }
@@ -109,9 +109,8 @@ public class Shelloyerson {
     //special methods
     public String toString(){
         if (this.isMale())
-            return " ____  \n|>._.|>\n ^  ^  \n" + name;
-        else return "  ____ \n<|._.<|\n  ^  ^ \n" + name;
+            return " ____  \n|>._.|>\n ^  ^  \n" + "His name is " + name;
+        else return "  ____ \n<|._.<|\n  ^  ^ \n" + "Her name is " + name;
     }
-    
 }
 
