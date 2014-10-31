@@ -3,9 +3,10 @@ import java.util.Scanner;
 public class ShelloyersonGame {
 
     public static void main(String[] args) {
-        // TODO Auto-generated method stub
+    	Shelloyerson currentShell = null;
+    	ShellUser currentUser = null;
+    	intro();
         Scanner console = new Scanner(System.in);
-        Shelloyerson s1 = intro(console);
         boolean end = false;
         while (!end){
             String input = console.nextLine();
@@ -16,48 +17,60 @@ public class ShelloyersonGame {
                 switch(next){
                 case "help":
                 	list();
+                	System.out.print(">>");
                 	break;
                 case "quit":
                     end = true;
                     break;
-//                case "new":
-//                    Shelloyerson s2 = newShelloyerson();
-//                    break;
-                case "view":
-                	System.out.println(s1);
+                case "new":
+                	newShell(currentUser);
                     break;
+                case "view":
+                	break;
 //                case "breed":
 //                    breed();
 //                    break;
+                case "login":
+                	currentUser = login();
+                	break;
                 default:
+                	System.out.println("Please type a valid command");
+                	System.out.print(">>");
                     break;
                 }
             }
         }
         System.out.println("Thank you for playing Shelloyerson Simulator 2014\nGoodbye!");
     }
-    public static Shelloyerson intro(Scanner s){
+    public static void intro(){
         System.out.println("Welcome to Shelloyerson Simulator 2014");
-        Shelloyerson s1 = new Shelloyerson();
-        System.out.println("your new Shelloyerson is " + s1.getGender());
-        System.out.println("What would you like to name your new Shelloyerson?");
-        System.out.println(">> ");
-        s1.setName(s.next());
         System.out.println();
         System.out.println("Type \"help\" if you need help");
-        return s1;
+        System.out.print(">>");
     }
 
     public static void list(){
-        System.out.println("Commands: help, quit, new, view, or breed");
+        System.out.println("Commands: help, quit, login, new, view, or breed");
+    }
+    public static ShellUser login(){
+    	Scanner s = new Scanner(System.in);
+    	System.out.println("Ah, I bet you'd like to log in, wouldn't you?");
+		System.out.println("I suppose I'll let you... with the right username, of course: ");
+		System.out.print(">>");
+    	ShellUser user1 = null;
+    	String input = s.next();
+    	input = input.toLowerCase();
+    	user1 = new ShellUser(input);
+    	System.out.println("Thanks, you've logged in " + user1 + ".");
+    	System.out.println("You may now mess with your shelloyersons.");
+        return user1;
     }
     
-    public static Shelloyerson newShelloyerson(){
+    public static void newShell(ShellUser username){
         System.out.println("Oh, so you want a new shelloyerson, huh?");
         System.out.print("Please enter your new Shelloyerson's name: ");
         Scanner namer = new Scanner(System.in);
         String name = namer.next();
-        return new Shelloyerson(name);
 
     }
 }
